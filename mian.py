@@ -16,14 +16,58 @@ def web_page():
         temperature = 'Error'
         humidity = 'Error'
 
-    # HTML untuk menampilkan data suhu dan kelembaban
-    html = f"""<html><head> <title>ESP Web Server</title> <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="data:,"> <style>html{{font-family: Helvetica; display:inline-block; margin: 0px auto; text-align: center;}}
-    h1{{color: #0F3376; padding: 2vh;}}p{{font-size: 1.5rem;}}.data{{font-size: 2rem; color: #333;}}</style></head>
-    <body> <h1>ESP Web Server - DHT11</h1>
-    <p>Suhu: <strong class="data">{temperature} &#8451;</strong></p>
-    <p>Kelembaban: <strong class="data">{humidity} %</strong></p>
-    </body></html>"""
+    # HTML untuk menampilkan data suhu dan kelembaban dengan tampilan lebih menarik
+    html = f"""<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ESP Web Server - DHT11</title>
+        <link rel="icon" href="data:,">
+        <style>
+            html {{
+                font-family: Arial, sans-serif;
+                display: inline-block;
+                margin: 0 auto;
+                text-align: center;
+                background-color: #f2f2f2;
+                color: #333;
+            }}
+            h1 {{
+                color: #0F3376;
+                padding: 20px;
+                margin-top: 20px;
+            }}
+            .card {{
+                background: #fff;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                display: inline-block;
+                margin: 20px;
+                padding: 20px;
+                width: 300px;
+            }}
+            .data-label {{
+                font-size: 1.25rem;
+                color: #555;
+            }}
+            .data-value {{
+                font-size: 2.5rem;
+                font-weight: bold;
+                color: #0F3376;
+            }}
+        </style>
+    </head>
+    <body>
+        <h1>ESP Web Server - DHT11</h1>
+        <div class="card">
+            <p class="data-label">Suhu:</p>
+            <p class="data-value">{temperature} &#8451;</p>
+            <p class="data-label">Kelembaban:</p>
+            <p class="data-value">{humidity} %</p>
+        </div>
+    </body>
+    </html>"""
     return html
 
 # Setup socket untuk web server
